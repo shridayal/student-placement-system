@@ -1,42 +1,71 @@
-# Student Placement Management System
+# 🎓 Student Placement Management System
 
-A comprehensive web application for managing student placements, connecting students with companies, and streamlining the recruitment process.
+A comprehensive web application for managing student placements, connecting students with companies, and streamlining the campus recruitment process.
 
-## Features
+## 📋 Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Database Schema](#database-schema)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-- 🎓 Student Profile Management
-- 🏢 Company Registration & Job Posting
-- 📊 Staff Dashboard & Analytics
-- 🔐 Role-based Authentication
-- 📱 Mobile Responsive Design
-- 📈 Real-time Notifications
+## ✨ Features
 
-## Tech Stack
+### For Students
+- 📝 Complete profile management with academic details
+- 📄 Resume upload and management
+- 🔍 Job search and filtering
+- 📊 Application tracking dashboard
+- 📅 Interview scheduling
+- 🔔 Real-time notifications
+
+### For Companies
+- 🏢 Company profile creation
+- 📢 Job posting management
+- 👥 Student database access
+- 📋 Application management
+- 📊 Recruitment analytics
+
+### For Staff/Admin
+- 👨‍🎓 Student management
+- 🏢 Company verification
+- 📈 Placement statistics
+- 📊 Report generation
+- 🔧 System configuration
+
+## 🛠️ Tech Stack
 
 ### Backend
-- Node.js + Express.js
-- TypeScript
-- MySQL + Sequelize ORM
-- JWT Authentication
-- RESTful API
+- **Runtime**: Node.js (v18+)
+- **Framework**: Express.js with TypeScript
+- **Database**: MySQL 8.0
+- **ORM**: Sequelize
+- **Authentication**: JWT
+- **Validation**: Joi
+- **File Upload**: Multer + Azure Blob Storage
 
 ### Frontend
-- React.js + TypeScript
-- Tailwind CSS
-- React Router
-- React Query
-- React Hook Form
+- **Framework**: React.js 18 with TypeScript
+- **Styling**: Tailwind CSS
+- **State Management**: React Query + Context API
+- **Forms**: React Hook Form
+- **Charts**: Recharts
+- **Tables**: React Table
 
-## Getting Started
+## 📋 Prerequisites
 
-### Prerequisites
-- Node.js >= 16.x
+- Node.js >= 18.x
 - MySQL >= 8.0
 - npm or yarn
+- Git
 
-### Installation
+## 🚀 Installation
 
-1. Clone the repository
+### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/student-placement-system.git
 cd student-placement-system
