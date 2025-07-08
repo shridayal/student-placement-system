@@ -6,3 +6,33 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Production
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Uploads
+uploads/
+temp/
+
+# OS
+Thumbs.db
