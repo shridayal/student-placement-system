@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT || '3306'),
     dialect: 'mysql',
-    logging: process.env.NODE_ENV === 'development' ? console.log : false,
+    logging: false, // Set to console.log to see SQL queries
     pool: {
       max: 5,
       min: 0,
@@ -20,21 +20,5 @@ const sequelize = new Sequelize(
     }
   }
 );
-
-export const connectDatabase = async (): Promise<void> => {
-  try {
-    await sequelize.authenticate();
-    console.log('✅ Database connection established successfully.');
-    
-    // Sync models in development
-    if (process.env.NODE_ENV === 'development') {
-      await sequelize.sync({ alter: true });
-      console.log('📊 Database synchronized');
-    }
-  } catch (error) {
-    console.error('❌ Unable to connect to the database:', error);
-    process.exit(1);
-  }
-};
 
 export default sequelize;
