@@ -3,10 +3,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import { connectDatabase } from './config/database';
+import sequelize from './config/database';
 
+// Load environment variables
 dotenv.config();
 
+// Create Express app
 const app: Application = express();
 const PORT = process.env.PORT || 5000;
 
@@ -17,42 +19,43 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// Health check endpoint
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({
     status: 'success',
     message: 'Student Placement API is running!',
     timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    database: 'MySQL Connected'
   });
 });
 
+// Root endpoint
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to Student Placement System API');
 });
 
-// 404 handler
-app.use((req: Request, res: Response) => {
-  res.status(404).json({
-    status: 'error',
-    message: 'Route not found'
-  });
-});
-
-// Start server with database connection
+// Database connection and server start
 const startServer = async () => {
   try {
-    await connectDatabase();
+    // Test database connection
+    await sequelize.authenticate();
+    console.log('✅ MySQL Database connection established successfully');
     
+    // Sync database (create tables if they don't exist)
+    await sequelize.sync({ alter: true });
+    console.log('✅ Database synchronized');
+
+    // Start server
     app.listen(PORT, () => {
       console.log(`🚀 Server is running on http://localhost:${PORT}`);
       console.log(`📡 Health check: http://localhost:${PORT}/api/health`);
+      console.log(`💾 Database: ${process.env.DB_NAME}`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error);
+    console.error('❌ Unable to connect to the database:', error);
     process.exit(1);
   }
 };
 
 startServer();
-
-export default app;
